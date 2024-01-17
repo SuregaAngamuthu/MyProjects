@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EMPLOYEEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
+    <Property Name="EMPLOYEE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DEPARTMENT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="EMPLOYEEEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <FunctionImport Name="CreateEmployee">
+      <Parameter Name="EMPLOYEE_ID" Mode="In" Type="Int32" />
+      <Parameter Name="EMPLOYEE_NAME" Mode="In" Type="String" />
+      <Parameter Name="DEPARTMENT" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteEmployee">
+      <Parameter Name="EMPLOYEE_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DisplayEmployee" ReturnType="Collection(EMPLOYEEModel.DisplayEmployee_Result)" />
+    <FunctionImport Name="UpdateEmployee">
+      <Parameter Name="EMPLOYEE_NAME" Mode="In" Type="String" />
+      <Parameter Name="DEPARTMENT" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="DisplayEmployee_Result">
+    <Property Type="Int32" Name="EMPLOYEE_ID" Nullable="false" />
+    <Property Type="String" Name="EMPLOYEE_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DEPARTMENT" Nullable="true" MaxLength="30" />
+  </ComplexType>
+</Schema>

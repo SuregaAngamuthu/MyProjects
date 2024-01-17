@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EMPLOYEEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
+    <Property Name="EMPLOYEE_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="DEPARTMENT" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <Function Name="CreateEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EMPLOYEE_ID" Type="int" Mode="In" />
+    <Parameter Name="EMPLOYEE_NAME" Type="varchar" Mode="In" />
+    <Parameter Name="DEPARTMENT" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="DeleteEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EMPLOYEE_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DisplayEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EMPLOYEE_NAME" Type="varchar" Mode="In" />
+    <Parameter Name="DEPARTMENT" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="EMPLOYEEModelStoreContainer">
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

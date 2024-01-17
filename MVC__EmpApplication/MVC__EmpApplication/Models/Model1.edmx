@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EMPLOYEEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
+          <Property Name="EMPLOYEE_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="DEPARTMENT" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <Function Name="CreateEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EMPLOYEE_ID" Type="int" Mode="In" />
+          <Parameter Name="EMPLOYEE_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="DEPARTMENT" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EMPLOYEE_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DisplayEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EMPLOYEE_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="DEPARTMENT" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="EMPLOYEEModelStoreContainer">
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EMPLOYEEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
+          <Property Name="EMPLOYEE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DEPARTMENT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="EMPLOYEEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <FunctionImport Name="CreateEmployee">
+            <Parameter Name="EMPLOYEE_ID" Mode="In" Type="Int32" />
+            <Parameter Name="EMPLOYEE_NAME" Mode="In" Type="String" />
+            <Parameter Name="DEPARTMENT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteEmployee">
+            <Parameter Name="EMPLOYEE_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DisplayEmployee" ReturnType="Collection(EMPLOYEEModel.DisplayEmployee_Result)" />
+          <FunctionImport Name="UpdateEmployee">
+            <Parameter Name="EMPLOYEE_NAME" Mode="In" Type="String" />
+            <Parameter Name="DEPARTMENT" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="DisplayEmployee_Result">
+          <Property Type="Int32" Name="EMPLOYEE_ID" Nullable="false" />
+          <Property Type="String" Name="EMPLOYEE_NAME" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DEPARTMENT" Nullable="true" MaxLength="30" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EMPLOYEEModelStoreContainer" CdmEntityContainer="EMPLOYEEEntities">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="EMPLOYEEModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+                <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE_NAME" />
+                <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CreateEmployee" FunctionName="EMPLOYEEModel.Store.CreateEmployee" />
+          <FunctionImportMapping FunctionImportName="DeleteEmployee" FunctionName="EMPLOYEEModel.Store.DeleteEmployee" />
+          <FunctionImportMapping FunctionImportName="DisplayEmployee" FunctionName="EMPLOYEEModel.Store.DisplayEmployee">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EMPLOYEEModel.DisplayEmployee_Result">
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+                <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE_NAME" />
+                <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateEmployee" FunctionName="EMPLOYEEModel.Store.UpdateEmployee" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

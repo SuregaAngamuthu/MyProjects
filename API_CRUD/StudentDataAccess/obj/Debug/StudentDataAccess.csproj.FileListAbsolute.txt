@@ -1,0 +1,12 @@
+C:\Users\Admin\source\repos\API_CRUD\StudentDataAccess\bin\Debug\StudentDataAccess.dll.config
+C:\Users\Admin\source\repos\API_CRUD\StudentDataAccess\bin\Debug\StudentDataAccess.dll
+C:\Users\Admin\source\repos\API_CRUD\StudentDataAccess\bin\Debug\StudentDataAccess.pdb
+C:\Users\Admin\source\repos\API_CRUD\StudentDataAccess\bin\Debug\EntityFramework.dll
+C:\Users\Admin\source\repos\API_CRUD\StudentDataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Admin\source\repos\API_CRUD\StudentDataAccess\bin\Debug\EntityFramework.xml
+C:\Users\Admin\source\repos\API_CRUD\StudentDataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Admin\source\repos\API_CRUD\StudentDataAccess\obj\Debug\StudentDataAccess.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\API_CRUD\StudentDataAccess\obj\Debug\StudentDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\API_CRUD\StudentDataAccess\obj\Debug\StudentDataAccess.csproj.CopyComplete
+C:\Users\Admin\source\repos\API_CRUD\StudentDataAccess\obj\Debug\StudentDataAccess.dll
+C:\Users\Admin\source\repos\API_CRUD\StudentDataAccess\obj\Debug\StudentDataAccess.pdb
